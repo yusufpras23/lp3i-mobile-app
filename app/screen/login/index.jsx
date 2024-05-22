@@ -1,16 +1,33 @@
-import { View, Text, TextInput, StyleSheet, Button, ImageBackground, Dimensions, Image, ScrollView } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, ImageBackground, Dimensions, Image, ScrollView, Alert } from 'react-native';
 import {MyButton} from '../../components'
 import { ICFacebook, ICGoogle } from '../../../assets';
 import React from 'react';
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
     const [email, onChangeEmail] =  React.useState('')
     const [pasword, onChangePassword] =  React.useState('')
 
     const onSubmitLogin = ()=>{
-        alert(email)
+       try{
+          if(email.trim().length === 0){
+            throw Error('Email is required')
+          }
+
+          if(pasword.trim().length === 0){
+            throw Error('pasword is required')
+          }
+
+          navigation.navigate('Home')
+       }catch(err){
+        Alert.alert('Error', err.message, [
+          {text: 'OK', onPress:()=>{
+            console.log('ERR')
+          }},
+        ]);
+       }
+
     }
 
 
@@ -54,6 +71,9 @@ export default function LoginScreen() {
             color='#000113'
             title="Login"/>
         </View>
+
+        <Text style={style.textContinueStyle}>or continue next</Text>
+
         <View style={style.btnContainer}>
             <MyButton
                 text="Google"
@@ -63,6 +83,10 @@ export default function LoginScreen() {
                 style={{marginLeft:15}}
                 text="Facebook"
                 imgUrl={ICFacebook}/>
+        </View>
+        <View style={style.containerBottom}>
+          <Text>Dont Have Account</Text>
+          <Text style={{fontWeight:'bold'}}>Create Now</Text>
         </View>
       </View>
     </ScrollView>
@@ -99,5 +123,15 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         paddingLeft :20,
         paddingRight :20
+    },
+    textContinueStyle:{
+      padding:15,
+      textAlign:'center'
+    },
+    containerBottom:{
+      flex:1,
+      flexDirection:'row',
+      justifyContent:'center',
+      marginTop: 50
     }
   })

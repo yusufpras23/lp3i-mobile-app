@@ -4,7 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   LoginScreen,
   HomeScreen,
-  SplashScreen
+  SplashScreen,
+  RegisterInputNameScreen,
+  RegisterInputDateScreen,
+  RegisterInputEmailScreen,
+  RegisterInputGenderScreen,
+  RegisterInputPasswordScreen
 } from "./screen"
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +25,11 @@ function App() {
         <Stack.Screen name="Login" 
           options={{headerShown:false}}
           component={LoginScreen} />
+        <Stack.Screen name="RegisterName" component={RegisterInputNameScreen} />
+        <Stack.Screen name="RegisterDate" component={RegisterInputDateScreen} />
+        <Stack.Screen name="RegisterGender" component={RegisterInputGenderScreen} />
+        <Stack.Screen name="RegisterEmail" component={RegisterInputEmailScreen} />
+        <Stack.Screen name="RegisterPassword" component={RegisterInputPasswordScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

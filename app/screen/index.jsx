@@ -1,9 +1,21 @@
-import HomeScreen from "./home/index.jsx"
+import HomeScreen from "./home"
 import LoginScreen from "./login"
-import SplashScreen from "./splash/index.jsx"
+import SplashScreen from "./splash"
+import { 
+    RegisterInputNameScreen,
+    RegisterInputDateScreen,
+    RegisterInputEmailScreen,
+    RegisterInputGenderScreen,
+    RegisterInputPasswordScreen
+} from "./register"
 
-export{
+export {
     HomeScreen,
     LoginScreen,
-    SplashScreen
+    SplashScreen,
+    RegisterInputNameScreen,
+    RegisterInputDateScreen,
+    RegisterInputEmailScreen,
+    RegisterInputGenderScreen,
+    RegisterInputPasswordScreen
 }

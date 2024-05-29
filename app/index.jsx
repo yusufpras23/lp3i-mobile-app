@@ -21,10 +21,10 @@ function App() {
         <Stack.Screen name="Splash" 
           options={{headerShown:false}}
           component={SplashScreen} />
-
         <Stack.Screen name="Login" 
           options={{headerShown:false}}
           component={LoginScreen} />
+
         <Stack.Screen name="RegisterName" component={RegisterInputNameScreen} />
         <Stack.Screen name="RegisterDate" component={RegisterInputDateScreen} />
         <Stack.Screen name="RegisterGender" component={RegisterInputGenderScreen} />

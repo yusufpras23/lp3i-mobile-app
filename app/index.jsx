@@ -11,27 +11,33 @@ import {
   RegisterInputGenderScreen,
   RegisterInputPasswordScreen
 } from "./screen"
+import store from './store'
+import { Provider } from 'react-redux'
+
+
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Splash">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Splash" 
-          options={{headerShown:false}}
-          component={SplashScreen} />
-        <Stack.Screen name="Login" 
-          options={{headerShown:false}}
-          component={LoginScreen} />
+    <Provider store={store}>
+      <NavigationContainer independent={true}>
+        <Stack.Navigator initialRouteName="Splash">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Splash" 
+            options={{headerShown:false}}
+            component={SplashScreen} />
+          <Stack.Screen name="Login" 
+            options={{headerShown:false}}
+            component={LoginScreen} />
 
-        <Stack.Screen name="RegisterName" component={RegisterInputNameScreen} />
-        <Stack.Screen name="RegisterDate" component={RegisterInputDateScreen} />
-        <Stack.Screen name="RegisterGender" component={RegisterInputGenderScreen} />
-        <Stack.Screen name="RegisterEmail" component={RegisterInputEmailScreen} />
-        <Stack.Screen name="RegisterPassword" component={RegisterInputPasswordScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name="RegisterName" component={RegisterInputNameScreen} />
+          <Stack.Screen name="RegisterDate" component={RegisterInputDateScreen} />
+          <Stack.Screen name="RegisterGender" component={RegisterInputGenderScreen} />
+          <Stack.Screen name="RegisterEmail" component={RegisterInputEmailScreen} />
+          <Stack.Screen name="RegisterPassword" component={RegisterInputPasswordScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

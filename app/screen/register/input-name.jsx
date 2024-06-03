@@ -8,22 +8,48 @@ import {
     CustomeInput,
     FbButton
 } from '../../components'
+import { useSelector, useDispatch } from 'react-redux'
+import { setFirstName, setSurenName } from '../../store/reducer/registerReducer'
 
-export default function RegisterInputNameScreen(){
+export default function RegisterInputNameScreen(navigation){
+    const register = useSelector((state) => state.register.formInput)
+    const dispatch = useDispatch()
+    const onNextInput = () =>{
+        try{
+            if( register.firstName === null || register.firstName === ""){
+                throw Error('First name is required')
+            }
+            if( register.sureName === null || register.sureName === ""){
+                throw Error('Sure name is required')
+            }
+            navigation.navigate("RegisterDate")
+        }catch(err){
+            Alert.alert('Error', err.message, [
+              {text: 'OK', onPress: () => {
+                console.log('ERR')
+              }},
+            ]);
+          }
+
+    }  
     return(
         <ScrollView style={styles.container}>
             <Text style={styles.textHeader}>What's your name?</Text>
             <Text>Enter the name you use in real life.</Text>
-            
+            <Text>{register.firstName}</Text>
             <View style={styles.containerInput}>
-                <CustomeInput 
+                <CustomeInput
+                    value={register.firstName}
+                    onChangeText={(value)=>dispatch(setFirstName(value))} 
                     label="First name"/>
                 
-                <CustomeInput 
+                <CustomeInput
+                    value={register.surenName}
+                    onChangeText={(value)=>dispatch(setSurenName(value))}  
                     label="Surename"/>
             </View>
 
-            <FbButton title="Next"/>
+            <FbButton title="Next" onPress={onNextInput}/>
             
         </ScrollView>
     )

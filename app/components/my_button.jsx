@@ -1,11 +1,11 @@
 import { 
     Image,
-    Touchable,
+    TouchableOpacity,
     Dimensions,
     Text,
     StyleSheet }
 from "react-native"
-import { TouchableOpacity } from "react-native-gesture-handler"
+// import { TouchableOpacity } from "react-native-gesture-handler"
 const windowWidth = Dimensions.get('window').width;
 export const MyButton=(props)=>{
     return(

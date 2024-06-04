@@ -2,7 +2,8 @@ import {
     View, 
     Text, 
     StyleSheet, 
-    ScrollView
+    ScrollView,
+    Alert
 } from "react-native";  
 import { 
     CustomeInput,
@@ -11,9 +12,10 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { setFirstName, setSurenName } from '../../store/reducer/registerReducer'
 
-export default function RegisterInputNameScreen(navigation){
+export default function RegisterInputNameScreen({navigation}){
     const register = useSelector((state) => state.register.formInput)
     const dispatch = useDispatch()
+    
     const onNextInput = () =>{
         try{
             if( register.firstName === null || register.firstName === ""){

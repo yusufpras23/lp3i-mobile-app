@@ -15,6 +15,8 @@ import { MyButton, FbButton } from '../../components'
 import { ICFacebook, ICGoogle } from '../../../assets'       
 import React from 'react'
 
+import ApiLib from "../../lib/ApiLib"
+
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -22,7 +24,7 @@ export default function LoginScreen({navigation}){
   const [email, onChangeEmail] = React.useState('')
   const [pasword, onChangePassword] = React.useState('')
 
-  const onSubmitLogin =()=>{
+  const onSubmitLogin =async ()=>{
     try{
       if(email.trim().length === 0 ){
         throw Error('Email is required')
@@ -32,7 +34,28 @@ export default function LoginScreen({navigation}){
         throw Error('Password is required')
       }
 
-      navigation.replace("Home")
+      const res =  await ApiLib.post('/action/findOne',{
+              "dataSource": "Cluster0",
+              "database": "app-lp3i-mobile",
+              "collection": "users",
+              "filter": {
+                "email": email,
+                "password": pasword
+              }
+          }
+      )
+
+      if(res.data.document != null){
+        navigation.replace("Home")
+      }else{
+        Alert.alert('Error', "Username & password tidak sesuai", [
+          {text: 'OK', onPress: () => {
+            console.log('ERR')
+          }},
+        ]);
+      }
+      
+
     }catch(err){
       Alert.alert('Error', err.message, [
         {text: 'OK', onPress: () => {

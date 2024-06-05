@@ -6,8 +6,7 @@ import {
     Text,
     Alert,
     TouchableOpacity,
-    SafeAreaView,
-    ScrollView
+    SafeAreaView
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import {  FbButton } from '../../components'
@@ -23,6 +22,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
             </Text>
     </TouchableOpacity>
 );
+
 
 
 export default function RegisterInputGenderScreen({navigation}){
@@ -62,7 +62,7 @@ export default function RegisterInputGenderScreen({navigation}){
     }
 
     return(
-        <ScrollView style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.textHeader}>What's your date of birth?</Text>
             <Text>Choose your date of birth. You can always make this private later. Why do I need to provide my date of birth?</Text>
             
@@ -72,11 +72,14 @@ export default function RegisterInputGenderScreen({navigation}){
                     renderItem={renderItem}
                     keyExtractor={item => item.value}
                     extraData={register.gender}/>
+                    
             </View>
-
-            <FbButton title="Next" onPress={onNextInput}/>
             
-        </ScrollView>
+            <FbButton 
+                style={styles.nextButton} 
+                title="Next" onPress={onNextInput}/>
+            
+        </SafeAreaView>
     )
 }
 
@@ -100,4 +103,7 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 14,
     },
+    nextButton:{
+        flexDirection:'row',
+    }
   });

@@ -38,7 +38,7 @@ export default function RegisterInputNameScreen({navigation}){
         <ScrollView style={styles.container}>
             <Text style={styles.textHeader}>What's your name?</Text>
             <Text>Enter the name you use in real life.</Text>
-            <Text>{register.firstName}</Text>
+            {/* <Text>{register.firstName}</Text> */}
             <View style={styles.containerInput}>
                 <CustomeInput
                     value={register.firstName}

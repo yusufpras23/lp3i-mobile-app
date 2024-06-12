@@ -8,6 +8,7 @@ import {
     RegisterInputGenderScreen,
     RegisterInputPasswordScreen
 } from "./register"
+import ProfileScreen from "./profile"
 
 export {
     HomeScreen,
@@ -17,5 +18,6 @@ export {
     RegisterInputDateScreen,
     RegisterInputEmailScreen,
     RegisterInputGenderScreen,
-    RegisterInputPasswordScreen
+    RegisterInputPasswordScreen,
+    ProfileScreen
 }

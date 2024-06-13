@@ -114,6 +114,7 @@ export default function LoginScreen({navigation}){
             value={pasword}/>
 
           <FbButton
+            loading={loading}
             onPress={onSubmitLogin}
             title="Login"/>
 
